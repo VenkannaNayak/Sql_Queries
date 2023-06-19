@@ -1,0 +1,16 @@
+sql of images display:
+
+CREATE TABLE Images (
+    ImageId INT IDENTITY(1,1) PRIMARY KEY,
+    ImageData VARBINARY(MAX)
+);
+select * from Images
+
+
+INSERT INTO Images (ImageData)
+SELECT BulkColumn
+FROM OPENROWSET(BULK 'C:\Users\Dell\Downloads\tiger.jpg', SINGLE_BLOB) AS Image;
+
+SELECT  ImageData
+FROM Images
+WHERE ImageId = 1;
